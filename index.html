@@ -183,8 +183,98 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    #vote-animation {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+#vote-animation.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.vote-box {
+  background: #111;
+  padding: 30px;
+  border-radius: 14px;
+  text-align: center;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.vote-box h2 {
+  margin: 0 0 10px;
+}
+
+.vote-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+#vote-loading {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10000;
+}
+
+#vote-loading.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#vote-loading img {
+  width: 120px;
+  animation: spin 1.6s linear infinite;
+}
+
+#vote-loading p {
+  margin-top: 14px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #ccc;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
   </style>
 </head>
+
+<div id="vote-loading">
+  <img src="./cartazes/loguinha.png">
+  <p>processando seu voto</p>
+</div>
+
+
 <body>
 
   <!-- IMAGEM DE ABERTURA -->
@@ -213,8 +303,22 @@
       </div>
 
       <div class="card">
+        <img src="./cartazes/tictac.jpg" alt="Cartaz Curta 03">
+        <h5>Tic tac da ausência</h5>
+        <h6>MAMB1V</h6>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScd1YUyfrvfVcAw0Bk2OahG-yyuKi_y7mQjcLWCS2hzGjWp-A/viewform?usp=pp_url&entry.251979213=As+ra%C3%ADzes+cantam+-+Mamb2V" target="_blank" class="vote-btn">VOTAR</a>
+      </div>
+
+      <div class="card">
         <img src="./cartazes/entreoolhardehoje.jpg" alt="Cartaz Curta 04">
         <h5>Entre o olhar de hoje e a lembrança do ontem</h5>
+        <h6>MAMB1M</h6>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScd1YUyfrvfVcAw0Bk2OahG-yyuKi_y7mQjcLWCS2hzGjWp-A/viewform?usp=pp_url&entry.251979213=Entre+o+olhar+de+hoje+e+a+lembran%C3%A7a+do+ontem+-+Mamb1M" target="_blank" class="vote-btn">VOTAR</a>
+      </div>
+
+      <div class="card">
+        <img src="./cartazes/aguas.jpg" alt="Cartaz Curta 04">
+        <h5>Águas no olhar</h5>
         <h6>MAMB1M</h6>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScd1YUyfrvfVcAw0Bk2OahG-yyuKi_y7mQjcLWCS2hzGjWp-A/viewform?usp=pp_url&entry.251979213=Entre+o+olhar+de+hoje+e+a+lembran%C3%A7a+do+ontem+-+Mamb1M" target="_blank" class="vote-btn">VOTAR</a>
       </div>
@@ -223,6 +327,27 @@
         <img src="./cartazes/largatasnovamente.jpg" alt="Cartaz Curta 02">
         <h5>Lagartas não falam</h5>
         <h6>EDIFIC1M</h6>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScd1YUyfrvfVcAw0Bk2OahG-yyuKi_y7mQjcLWCS2hzGjWp-A/viewform?usp=pp_url&entry.251979213=Largartas+n%C3%A3o+falam+-+Edific1M" target="_blank" class="vote-btn">VOTAR</a>
+      </div>
+
+      <div class="card">
+        <img src="./cartazes/camaleao.jpg" alt="Cartaz Curta 02">
+        <h5>Camaleão</h5>
+        <h6>EDIFIC1V</h6>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScd1YUyfrvfVcAw0Bk2OahG-yyuKi_y7mQjcLWCS2hzGjWp-A/viewform?usp=pp_url&entry.251979213=Largartas+n%C3%A3o+falam+-+Edific1M" target="_blank" class="vote-btn">VOTAR</a>
+      </div>
+
+      <div class="card">
+        <img src="./cartazes/perpetuo.jpg" alt="Cartaz Curta 02">
+        <h5>Camaleão</h5>
+        <h6>EDIFIC1V</h6>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScd1YUyfrvfVcAw0Bk2OahG-yyuKi_y7mQjcLWCS2hzGjWp-A/viewform?usp=pp_url&entry.251979213=Largartas+n%C3%A3o+falam+-+Edific1M" target="_blank" class="vote-btn">VOTAR</a>
+      </div>
+
+      <div class="card">
+        <img src="./cartazes/sobomesmo.jpg" alt="Cartaz Curta 02">
+        <h5>Sob o mesmo sol</h5>
+        <h6>INFOWEB1V</h6>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScd1YUyfrvfVcAw0Bk2OahG-yyuKi_y7mQjcLWCS2hzGjWp-A/viewform?usp=pp_url&entry.251979213=Largartas+n%C3%A3o+falam+-+Edific1M" target="_blank" class="vote-btn">VOTAR</a>
       </div>
 
@@ -260,6 +385,7 @@
     </video>
   </div>
 </div>
+
 
 
 <!--<script>
@@ -309,7 +435,29 @@
   );
 
   cards.forEach(card => observer.observe(card));
+
+
+  
 </script>
+
+<script>
+  const voteButtons = document.querySelectorAll(".vote-btn");
+  const loading = document.getElementById("vote-loading");
+
+  voteButtons.forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      const link = btn.href;
+      loading.classList.add("active");
+
+      setTimeout(() => {
+        window.open(link, "_blank");
+        loading.classList.remove("active");
+      }, 1800);
+    });
+  });
+</script>
+
 
 
 
