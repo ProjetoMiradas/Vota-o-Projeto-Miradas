@@ -5,6 +5,7 @@
   <title>PROJETO MIRADAS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
 
   <style>
@@ -41,7 +42,7 @@
 
     body {
       margin: 0;
-      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #000000;
       color: #ffffff;
     }
@@ -210,6 +211,27 @@
   animation: pop 0.4s ease;
 }
 
+.vote-btn {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+
+
 @keyframes pop {
   from {
     transform: scale(0.8);
@@ -265,6 +287,33 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #151515;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+}
+
+.search-box i {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.search-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: #888;
+}
 
   </style>
 </head>
@@ -281,6 +330,16 @@
   <div class="hero">
     <img src="./cartazes/miradasII.inicio (2).png" alt="Projeto MIRADAS">
   </div>
+
+  <div class="search-box">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Pesquisar curta, grupo ou turma..."
+  >
+</div>
+
 
   <!-- SEÇÃO DE VOTAÇÃO -->
   <div class="content">
@@ -307,7 +366,7 @@
       <div class="card">
         <img src="./cartazes/vislumbre.jpg" alt="Cartaz Curta 04">
         <h5>Âmbar</h5>
-        <h5>Vislumbre</h5>
+        <h4>Vislumbre</h4>
         <h6>MAMB1M</h6>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBWoIdJkbaqOfDSagqCGHPf0rEegLDgqEqSACAguL6_5NThQ/viewform?usp=pp_url&entry.49027326=Vislumbre+-+%C3%82mbar" target="_blank" class="vote-btn">VOTAR</a>
       </div>
@@ -315,7 +374,7 @@
       <div class="card">
         <img src="./cartazes/sabor.jpg" alt="Cartaz Curta 04">
         <h5>Leve raízes</h5>
-        <h5>Sabor, saber de vida</h5>
+        <h4>Sabor, saber de vida</h4>
         <h6>MAMB1M</h6>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBWoIdJkbaqOfDSagqCGHPf0rEegLDgqEqSACAguL6_5NThQ/viewform?usp=pp_url&entry.49027326=Sabor,+saber+de+vida+-+Leve+ra%C3%ADzes" target="_blank" class="vote-btn">VOTAR</a>
       </div>
@@ -387,7 +446,7 @@
       <div class="card">
         <img src="./cartazes/camaleao.jpg" alt="Cartaz Curta 02">
         <h5>Ad Astra</h5>
-        <h5>Camaleão</h5>
+        <h4>Camaleão</h4>
         <h6>EDIFIC1V</h6>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBWoIdJkbaqOfDSagqCGHPf0rEegLDgqEqSACAguL6_5NThQ/viewform?usp=pp_url&entry.49027326=Camale%C3%A3o+-+Ad+Astra" target="_blank" class="vote-btn">VOTAR</a>
       </div>
@@ -555,6 +614,20 @@
   });
 </script>
 
+
+<script>
+  const searchInput = document.getElementById("searchInput");
+  const searchCards = document.querySelectorAll(".card");
+
+  searchInput.addEventListener("input", () => {
+    const value = searchInput.value.toLowerCase();
+
+    searchCards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(value) ? "block" : "none";
+    });
+  });
+</script>
 
 
 
